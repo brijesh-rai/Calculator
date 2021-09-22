@@ -444,7 +444,7 @@ function if_div(equation){
 	var size=equation.length;
 	var exist=equation.indexOf("/");
 	var left,right,next,i,j,div_calc;
-	if(exist>0 && exist!=size-1){
+	if(exist>0){
 		for(i=exist-1;i>=0;i--){
 			var found=equation[i];
 			if(found=="+" || found=="/" || found=="*" || found=="-"){
@@ -455,7 +455,9 @@ function if_div(equation){
 			}
 		}
 		left=Number(equation.substring(next,exist));
-		for(j=exist+1;j<size;j++){
+		if(equation[exist+1]=="-")
+		{
+			for(j=exist+2;j<size;j++){
 			var found=equation[j];
 			if(found=="+" || found=="/" || found=="*" || found=="-"){
 				break;
@@ -463,8 +465,23 @@ function if_div(equation){
 			else{
 				next=j;
 			}
-		}
+			}
 		right=Number(equation.substring(exist+1,j));
+		}
+		else
+		{
+			for(j=exist+1;j<size;j++){
+			var found=equation[j];
+			if(found=="+" || found=="/" || found=="*" || found=="-"){
+				break;
+			}
+			else{
+				next=j;
+			}
+			}
+			right=Number(equation.substring(exist+1,j));
+		}
+		
 		div_calc=left/right;
 		equation=equation.substring(0,i+1)+div_calc+
 						equation.substring(j,size);
@@ -479,6 +496,7 @@ function if_mul(equation){
 	var size=equation.length;
 	var exist=equation.indexOf("*");
 	var left,right,next,i,j,mul_calc;
+
 	if(exist>0){
 		for(i=exist-1;i>=0;i--){
 			var found=equation[i];
@@ -490,7 +508,22 @@ function if_mul(equation){
 			}
 		}
 		left=Number(equation.substring(next,exist));
-		for(j=exist+1;j<size;j++){
+		if(equation[exist+1]=="-")
+		{
+			for(j=exist+2;j<size;j++){
+				var found=equation[j];
+				if(found=="+" || found=="/" || found=="*" || found=="-"){
+				break;
+			}
+			else{
+				next=j;
+			}
+			}
+			right=Number(equation.substring(exist+1,j));
+		}
+		else
+		{
+			for(j=exist+1;j<size;j++){
 			var found=equation[j];
 			if(found=="+" || found=="/" || found=="*" || found=="-"){
 				break;
@@ -498,8 +531,10 @@ function if_mul(equation){
 			else{
 				next=j;
 			}
+			}
+			right=Number(equation.substring(exist+1,j));
 		}
-		right=Number(equation.substring(exist+1,j));
+		
 		mul_calc=left*right;
 		equation=equation.substring(0,i+1)+mul_calc+
 						equation.substring(j,size);

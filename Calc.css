@@ -17,7 +17,7 @@ button{
 	text-align: center;
 	border-radius:10px ;
 	margin: .2em;
-	padding: 1.2em;
+	padding: 1.3em;
 	width: 22%;
 	font-size:24px;
 	background-color:rgba(255,255,255,0.3);
@@ -32,7 +32,7 @@ button:hover
 	width: 44%;
 }
 #input,#result{
-	width: 40%;
+	width: 39%;
 	text-align: right;
 	margin: auto;
 	font-size: 35px;
@@ -41,11 +41,13 @@ button:hover
 }
 #input{
 	border-bottom: none;
-	overflow-wrap: break-word;
-	height: 100px;
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	height: 80px;
 	border-radius: 4px 4px 0px 0px;
 }
 #result{
+	padding-top: 5px;
 	border-radius: 0px 0px 4px 4px;
 	border-top: none;
 	height: 50px;
@@ -53,6 +55,9 @@ button:hover
 @media screen and (max-width: 768px){
 	.container,#input,#result{
 		width: 100%;
+	}
+	#input,#result{
+		padding: 5px;
 	}
 	button{
 		font-size: 22px;
