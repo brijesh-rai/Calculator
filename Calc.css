@@ -1,64 +1,56 @@
 *{
-	font-family: 'Roboto', sans-serif;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 body{
-	align-items: center;
 	background-color: #b3ffb3;
 }
 .container{
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	height: 400px;
-	width: 300px;
-	padding:4px;
-}
-#input{
-	margin-top: 80px;
-	margin-left: auto;
-	margin-right: auto;
-	height: 50px;
-	width: 300px;
-	padding: 4px;
-	text-align: right;
-	font-size: 30px;
-	font-weight: bold;
-}
-#result{
-	margin-left: auto;
-	margin-right: auto;
-	height: 25px;
-	width: 300px;
-	padding: 4px;
-	text-align: right;
-	font-size: 16px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 40%;
+	margin: auto;
 }
 button{
-	position: relative;
-	margin-top:1px; 
-	height: 19.75%;
-	width: 24%;
-	font-size: 22px;
-	border:none;
-	border-radius: 50%;
+	border-radius:10px ;
+	margin: .2em;
+	padding: 1.2em;
+	width: 22%;
+	font-size:24px;
 	background-color:rgba(255,255,255,0.3);
-}
-@media screen and (min-width: 800px) {
-  .left, .main, .right {
-    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-  }
 }
 button:hover
 {
-	transition: 0.5s;
 	background-color: rgba(3, 252, 95,0.2);
 	box-shadow: 1px 1px 10px #b3ffb3;
 	font-weight: bold;	
 }
 #clear{
-	width: 144px;
-	border-radius: 25px;
+	width: 44%;
 }
 #input,#result{
+	width: 40%;
+	text-align: right;
+	margin: auto;
+	font-size: 35px;
+	font-weight: bold;
 	background-color:rgba(255,255,255,0.3);
+}
+#input{
+	border-bottom: none;
+	overflow-wrap: break-word;
+	height: 100px;
+	border-radius: 4px 4px 0px 0px;
+}
+#result{
+	border-radius: 0px 0px 4px 4px;
+	border-top: none;
+	height: 50px;
+}
+@media screen and (max-width: 768px){
+	.container,#input,#result{
+		width: 100%;
+	}
 }
