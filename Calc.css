@@ -36,7 +36,6 @@ button:hover
 	text-align: right;
 	margin: auto;
 	font-size: 35px;
-	font-weight: bold;
 	background-color:rgba(255,255,255,0.3);
 }
 #input{
@@ -51,6 +50,8 @@ button:hover
 	border-radius: 0px 0px 4px 4px;
 	border-top: none;
 	height: 50px;
+	color: #808080;
+	font-size: 30px;
 }
 @media screen and (max-width: 768px){
 	.container,#input,#result{
