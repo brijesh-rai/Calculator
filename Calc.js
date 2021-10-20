@@ -1,5 +1,14 @@
 var input=document.getElementById("input");
 var res=document.getElementById("result");
+function change_icon()
+{
+	let state = document.querySelector("i");
+	state.classList.toggle("change");
+    $(".fas").toggleClass("fa-microphone-slash fa-microphone");
+}
+
+
+
 
 function one(){
 	same();

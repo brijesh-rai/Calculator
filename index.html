@@ -3,13 +3,20 @@
 <head>
 	<title>Calculator</title>
 	<link rel="stylesheet" type="text/css" href="Calc.css">
+	<script src="https://kit.fontawesome.com/29534fb370.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity=
+		"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous">
+    </script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 		<div id="input"></div>
 		<div id="result"></div>
 		<div class="container">
-			<button id="clear" onclick="clear_all()"> Clear </button>
+			<button onclick="clear_all()"> Clear </button>
+			<button onclick="change_icon()"><i class="fas fa-microphone-slash"></i></button>
 			<button onclick="backspace()"> <- </button>
 			<button onclick="divide()"> / </button>
 			<button onclick="seven()"> 7 </button>

@@ -53,6 +53,13 @@ button:hover
 	color: #808080;
 	font-size: 30px;
 }
+i{
+	font-size: 1.2em;
+	color: red;
+}
+.change{
+	color: blue;
+}
 @media screen and (max-width: 768px){
 	.container,#input,#result{
 		width: 100%;
