@@ -1,12 +1,52 @@
 var input=document.getElementById("input");
 var res=document.getElementById("result");
+var interim = document.querySelector("#inter");
+let flag = 1;
+
+if ("webkitSpeechRecognition" in window) {
+  let speechRecognition = new webkitSpeechRecognition();
+  let final_transcript = ""
+
+  speechRecognition.continuous = true;
+  speechRecognition.interimResults = true;
+  speechRecognition.lang = "english";
+
+
+  speechRecognition.onresult = (event) => {
+    let interim_transcript = "";
+
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+
+    const expp = final_transcript;
+    input.innerHTML = expp.replace(/\s+/g, '');
+    interim.innerHTML = interim_transcript;
+    arith();
+  };
 function change_icon()
 {
 	let state = document.querySelector("i");
 	state.classList.toggle("change");
     $(".fas").toggleClass("fa-microphone-slash fa-microphone");
+    if(flag==1){
+    	speechRecognition.start();
+    	flag = 0;
+    }
+    else
+    {
+    	speechRecognition.stop();
+    	flag=1;
+    }
 }
 
+} else {
+  console.log("Speech Recognition Not Available");
+}
 
 
 

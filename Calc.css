@@ -36,9 +36,19 @@ button:hover
 	text-align: right;
 	margin: auto;
 	font-size: 2.2em;
+}
+#inter{
+	font-size: 2.2em;
+	color: #595959;
+}
+#result{
 	background-color:rgba(255,255,255,0.3);
 }
-#input{
+#block{
+	text-align: right;
+	background-color:rgba(255,255,255,0.3) ;
+	margin: auto;
+	width: 39%;
 	border-bottom: none;
 	overflow-x: auto;
 	scroll-behavior: smooth;
@@ -61,7 +71,7 @@ i{
 	color: blue;
 }
 @media screen and (max-width: 768px){
-	.container,#input,#result{
+	.container,#input,#result,#block{
 		width: 100%;
 	}
 	#input,#result{
