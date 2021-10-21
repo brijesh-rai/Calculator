@@ -1,11 +1,14 @@
 var input=document.getElementById("input");
 var res=document.getElementById("result");
 var interim = document.querySelector("#inter");
-let flag = 1;
+var flag = 1;
+
+document.getElementById("coming").setAttribute("disabled",true);
+document.querySelector("i").style.setProperty("color","grey");
 
 if ("webkitSpeechRecognition" in window) {
   let speechRecognition = new webkitSpeechRecognition();
-  let final_transcript = ""
+  let final_transcript = "";
 
   speechRecognition.continuous = true;
   speechRecognition.interimResults = true;
@@ -40,8 +43,11 @@ function change_icon()
     else
     {
     	speechRecognition.stop();
+    	final_transcript="";
+    	interim_transcript = "";	
     	flag=1;
     }
+
 }
 
 } else {
