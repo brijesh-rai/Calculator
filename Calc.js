@@ -3,8 +3,6 @@ var res=document.getElementById("result");
 var interim = document.querySelector("#inter");
 var flag = 1;
 
-document.getElementById("coming").setAttribute("disabled",true);
-document.querySelector("i").style.setProperty("color","grey");
 
 if ("webkitSpeechRecognition" in window) {
   let speechRecognition = new webkitSpeechRecognition();
