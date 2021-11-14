@@ -372,6 +372,12 @@ function same(){
 }
 function arith(){
 	var equation=input.innerHTML;
+	if(equation[0] == "+" || equation[0] == "*" || equation[0] == "/" ||
+		 equation[0] == "m" || equation[0] == "d")
+	{
+		res.innerHTML = "Please enter valid input";
+		return;
+	}
 	if(equation[0]=="-"){
 		var sub=equation.substring(1,equation.length);
 	}
@@ -444,7 +450,13 @@ function arith(){
 				equation=if_minus(equation);
 			}
 		}
-		res.innerHTML=equation;
+		if(isNaN(equation)){
+				res.innerHTML = "Please enter valid input"
+		}
+		else{
+			res.innerHTML=equation;
+		}
+		
 	}
 	else{
 		res.innerHTML="";
