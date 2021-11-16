@@ -3,10 +3,9 @@ var res=document.getElementById("result");
 var interim = document.querySelector("#inter");
 var flag = 1;
 
-
 if ("webkitSpeechRecognition" in window) {
   let speechRecognition = new webkitSpeechRecognition();
-  let final_transcript = "";
+  var final_transcript = "";
 
   speechRecognition.continuous = true;
   speechRecognition.interimResults = true;
@@ -29,8 +28,8 @@ if ("webkitSpeechRecognition" in window) {
     interim.innerHTML = interim_transcript;
     arith();
   };
-function change_icon()
-{
+
+function change_icon(){
 	let state = document.querySelector("i");
 	state.classList.toggle("change");
     $(".fas").toggleClass("fa-microphone-slash fa-microphone");
@@ -46,13 +45,12 @@ function change_icon()
     	flag=1;
     }
 
-}
+  }
 
-} else {
+}
+else {
   console.log("Speech Recognition Not Available");
 }
-
-
 
 function one(){
 	same();
@@ -81,6 +79,7 @@ function two(){
 	}
 	arith();
 	}
+
 function three(){
 	same();
 	var size=input.innerHTML.length;
@@ -94,6 +93,7 @@ function three(){
 	}
 	arith();
 	}
+
 function four(){
 	same();
 	var size=input.innerHTML.length;
@@ -107,6 +107,7 @@ function four(){
 	}
 	arith();
 	}
+
 function five(){
 	same();
 	var size=input.innerHTML.length;
@@ -120,6 +121,7 @@ function five(){
 	}
 	arith();
 	}
+
 function six(){
 	same();
 	var size=input.innerHTML.length;
@@ -133,6 +135,7 @@ function six(){
 	}
 	arith();
 	}
+
 function seven(){
 	same();
 	var size=input.innerHTML.length;
@@ -146,6 +149,7 @@ function seven(){
 	}
 	arith();
 	}
+
 function eight(){
 	same();
 	var size=input.innerHTML.length;
@@ -159,6 +163,7 @@ function eight(){
 	}
 	arith();
 	}
+
 function nine(){
 	same();
 	var size=input.innerHTML.length;
@@ -172,6 +177,7 @@ function nine(){
 	}
 	arith();
 	}
+
 function zero(){
 	same();
 	var size=input.innerHTML.length;
@@ -195,6 +201,7 @@ function zero(){
 	}
 	arith();
 	}
+
 function double_zero(){
 	same();
 	var size=input.innerHTML.length;
@@ -224,7 +231,7 @@ function point(){
 	same();
 	var size=input.innerHTML.length;
 	var index=input.innerHTML[size-1];
-	if(size==0 || index=="/" || index=="*" || index=="-" || index=="+" || index=="%"){
+	if(size==0 || index=="/" || index=="*" || index=="-" || index=="+"){
 		input.innerHTML+="0.";
 	}
 	else if(size==1 && input.innerHTML[0]=="-"){
@@ -238,7 +245,7 @@ function point(){
 				flag=0;
 				break;
 			}
-			if(v=="/" || v=="*" || v=="-" || v=="+" || v=="%")
+			if(v=="/" || v=="*" || v=="-" || v=="+")
 			{
 				break;
 			}
@@ -248,14 +255,13 @@ function point(){
 		}
 	}
 	}	
+
 function add(){
 	var size=input.innerHTML.length;
 	var index=input.innerHTML[size-1];
 	var index2=input.innerHTML[size-2];
-	if(index=="%"){
-		input.innerHTML+="+";
-	}
-	else if((index2=="/" || index2=="*") && (index=="-")){
+
+  if((index2=="/" || index2=="*") && (index=="-")){
 		input.innerHTML=input.innerHTML.slice(0,-2);
 		input.innerHTML+="+";
 	}
@@ -267,13 +273,12 @@ function add(){
 		input.innerHTML+="+";
 	}
 	}
+
 function subtract(){
 	var size=input.innerHTML.length;
 	var index=input.innerHTML[size-1];
-	if(index=="%"){
-		input.innerHTML+="-";
-	}
-	else if(index=="+"){
+
+	if(index=="+"){
 		input.innerHTML=input.innerHTML.slice(0,-1);
 		input.innerHTML+="-";
 	}
@@ -281,16 +286,13 @@ function subtract(){
 		input.innerHTML+="-";
 	}
 	}
+
 function mul(){
 	var size=input.innerHTML.length;
 	var index=input.innerHTML[size-1];
 	var index2=input.innerHTML[size-2];
-	var index3=input.innerHTML[size-3];
-	if(index3=="%"){
-		input.innerHTML=input.innerHTML.slice(0,-2);
-		input.innerHTML+="*";
-	}
-	else if((size!=1) && check2() && (index=="+" || index=="-" || index=="/" )){
+	
+	if((size!=1) && check2() && (index=="+" || index=="-" || index=="/" )){
 		input.innerHTML=input.innerHTML.slice(0,-1);
 		input.innerHTML+="*";
 	}
@@ -301,6 +303,7 @@ function mul(){
 		input.innerHTML+="*";
 	}
 	}
+
 function divide(){
 	var size=input.innerHTML.length;
 	var index=input.innerHTML[size-1];
@@ -310,14 +313,7 @@ function divide(){
 		input.innerHTML=input.innerHTML.slice(0,-2);
 		input.innerHTML+="/";
 	}
-	else if(index3=="%"){
-		input.innerHTML=input.innerHTML.slice(0,-3);
-		input.innerHTML+="/";
-	}
-	else if(index=="%"){
-		input.innerHTML+="/";
-	}
-	else if((size!=1) && check2() && (index=="*" || index=="+" || index=="-")){
+	else if((size!=1) && (index=="*" || index=="+" || index=="-")){
 		input.innerHTML=input.innerHTML.slice(0,-1);
 		input.innerHTML+="/";
 	}
@@ -325,10 +321,13 @@ function divide(){
 		input.innerHTML+="/";
 	}
 	}
+
 function clear_all(){
+  final_transcript = "";      
 	input.innerHTML="";
 	res.innerHTML="";
 	}
+
 function backspace(){
 	input.innerHTML=input.innerHTML.slice(0,-1);
 	var size=input.innerHTML.length;
@@ -340,10 +339,12 @@ function backspace(){
 		res.innerHTML="";
 	}
 	}
+
 function equal(){
 	var result=res.innerHTML;
 	input.innerHTML=result;
 	}
+
 function check(){
 		var size=input.innerHTML.length;
 		var index=input.innerHTML[size-1];
@@ -354,6 +355,7 @@ function check(){
 			return false;
 		}
 	}
+
 function check2(){
 	var size=input.innerHTML.length;
 	var index2=input.innerHTML[size-2];
@@ -364,12 +366,14 @@ function check2(){
 			return false;
 		}
 }
+
 function same(){
 	if(input.innerHTML==res.innerHTML){
 		input.innerHTML="";
 		res.innerHTML="";
 	}
 }
+
 function arith(){
 	var equation=input.innerHTML;
 	if(equation[0] == "+" || equation[0] == "*" || equation[0] == "/" ||
@@ -483,6 +487,7 @@ function if_index_minus_first_plus(equation){
 		equation=plus_calc+equation.substring(j,size);
 		return equation;
 }
+
 function if_index_minus_first_minus(equation){
 	var size=equation.length;
 	var ch=equation.substring(1,size);
@@ -503,7 +508,6 @@ function if_index_minus_first_minus(equation){
 		equation=minus_calc+equation.substring(j,size);
 		return equation;
 }
-
 
 function if_div(equation){
 	var size=equation.length;
@@ -679,10 +683,3 @@ function if_minus(equation){
 		return equation;
 	}
 }
-
-	
-
-
-
-
-
